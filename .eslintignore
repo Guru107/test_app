@@ -1,0 +1,7 @@
+*.css
+*.html
+*.md
+*.sh
+*.log
+build/
+node_modules/

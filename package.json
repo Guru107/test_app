@@ -4,7 +4,14 @@
  "description": "Yet another app",
  "main": "build/server.js",
  "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1"
+  "precommit": "lint-staged",
+  "lint":"eslint 'src/**' --ext .js --cache --fix --ignore-path .eslintignore"
+ },
+ "lint-staged":{
+  "*.js": [
+	"prettier --write",
+	"git add"
+  ]
  },
  "repository": {
   "type": "git",
@@ -23,14 +30,26 @@
  "homepage": "https://github.com/Guru107/test_app#readme",
  "devDependencies": {
   "babel-core": "6.25.0",
+  "babel-eslint": "7.2.3",
   "babel-loader": "7.1.1",
   "babel-plugin-transform-react-jsx": "6.24.1",
   "babel-preset-env": "1.6.0",
   "css-loader": "0.28.4",
+  "eslint": "4.4.1",
+  "eslint-config-standard": "10.2.1",
+  "eslint-config-standard-preact": "1.1.6",
+  "eslint-plugin-import": "2.7.0",
+  "eslint-plugin-node": "5.1.1",
+  "eslint-plugin-prettier": "2.2.0",
+  "eslint-plugin-promise": "3.5.0",
+  "eslint-plugin-react": "7.2.1",
+  "eslint-plugin-standard": "3.0.1",
+  "husky": "0.14.3",
   "less": "2.7.2",
   "less-loader": "4.0.5",
+  "lint-staged": "4.0.3",
   "postcss-loader": "2.0.6",
-  "prettier-eslint": "6.4.2",
+  "prettier": "1.5.3",
   "style-loader": "0.18.2",
   "webpack": "3.5.4",
   "webpack-dev-server": "2.7.1"
