@@ -1,0 +1,47 @@
+{
+ "name": "test_app",
+ "version": "1.0.0",
+ "description": "Yet another app",
+ "main": "build/server.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1"
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/Guru107/test_app.git"
+ },
+ "keywords": [
+  "preact",
+  "pwa",
+  "service workers"
+ ],
+ "author": "Guru107 <guruak107@gmail.com>",
+ "license": "MIT",
+ "bugs": {
+  "url": "https://github.com/Guru107/test_app/issues"
+ },
+ "homepage": "https://github.com/Guru107/test_app#readme",
+ "devDependencies": {
+  "babel-core": "6.25.0",
+  "babel-loader": "7.1.1",
+  "babel-plugin-transform-react-jsx": "6.24.1",
+  "babel-preset-env": "1.6.0",
+  "css-loader": "0.28.4",
+  "less": "2.7.2",
+  "less-loader": "4.0.5",
+  "postcss-loader": "2.0.6",
+  "style-loader": "0.18.2",
+  "webpack": "3.5.4",
+  "webpack-dev-server": "2.7.1"
+ },
+ "dependencies": {
+  "preact": "8.2.1",
+  "preact-async-route": "2.0.0",
+  "preact-helmet": "4.0.0-alpha-3",
+  "preact-mdl": "2.2.1",
+  "preact-render-to-string": "3.6.3",
+  "preact-router": "2.5.5",
+  "preact-token-input": "0.3.0",
+  "preact-virtual-list": "0.3.1"
+ }
+}
