@@ -9,6 +9,7 @@
  },
  "lint-staged": {
   "*.js": [
+	"eslint --cache --fix --ignore-path .eslintignore",
    "prettier --write",
    "git add"
   ]
