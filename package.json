@@ -5,12 +5,12 @@
  "main": "build/server.js",
  "scripts": {
   "precommit": "lint-staged",
-  "lint":"eslint 'src/**' --ext .js --cache --fix --ignore-path .eslintignore"
+  "lint": "eslint 'src/**' --ext .js --cache --fix --ignore-path .eslintignore"
  },
- "lint-staged":{
+ "lint-staged": {
   "*.js": [
-	"prettier --write",
-	"git add"
+   "prettier --write",
+   "git add"
   ]
  },
  "repository": {
@@ -36,6 +36,7 @@
   "babel-preset-env": "1.6.0",
   "css-loader": "0.28.4",
   "eslint": "4.4.1",
+  "eslint-config-prettier": "2.3.0",
   "eslint-config-standard": "10.2.1",
   "eslint-config-standard-preact": "1.1.6",
   "eslint-plugin-import": "2.7.0",

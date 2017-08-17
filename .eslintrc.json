@@ -1,8 +1,17 @@
 {
 	"parser": "babel-eslint",
-	"extends": ["standard","standard-preact"],
-	"plugins":["prettier"],
+	"extends": ["eslint:recommended", "plugin:react/all","prettier"],
+	"plugins":["react","prettier"],
+	"parserOptions": {
+		"ecmaFeatures": {
+		  "jsx": true
+		}
+	  },
 	"rules": {
-		"prettier/prettier": "error"
+		"prettier/prettier":["error",{
+			"tabWidth":4,
+			"useTabs":true,
+			"semi":false
+		}]
 	}
 }
