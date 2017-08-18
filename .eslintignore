@@ -3,5 +3,7 @@
 *.md
 *.sh
 *.log
+*.json
 build/
+public/
 node_modules/

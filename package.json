@@ -5,7 +5,7 @@
  "main": "build/server.js",
  "scripts": {
   "precommit": "lint-staged",
-  "lint": "eslint 'src/**' --ext .js --cache --fix --ignore-path .eslintignore"
+  "lint": "eslint 'src/**' 'webpack/**' --ext .js --cache --fix --ignore-path .eslintignore"
  },
  "lint-staged": {
   "*.js": [

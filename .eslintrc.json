@@ -4,9 +4,18 @@
 	"plugins":["react","prettier"],
 	"parserOptions": {
 		"ecmaFeatures": {
-		  "jsx": true
+			"jsx": true,
+			"ecmaVersion":6,
+			"experimentalObjectRestSpread":true
 		}
-	  },
+	 },
+	 "globals": {
+		 "require":true,
+		 "__dirname":true,
+		 "module":true,
+		 "Promise":true,
+		 "console":true
+	 },
 	"rules": {
 		"prettier/prettier":["error",{
 			"tabWidth":4,
