@@ -7,11 +7,6 @@
 		}
 	  }]
 	],
-	"env":{
-		"development":{
-			"plugins":["react-hot-loader/babel"]
-		}
-	},
 	"plugins": [
 		["transform-react-jsx", { "pragma": "h" }],
 		["module-resolver",{

@@ -1,20 +1,16 @@
-import { render } from "preact"
-import AppContainer from "react-hot-loader/lib/AppContainer"
-import TestComponent from "../app/TestComponent"
+import { h, render } from "preact"
 
-const renderFunc = App =>
-	render(
-		<AppContainer>
-			<App />
-		</AppContainer>,
-		document.body
-	)
+let root = document.getElementById("root").lastElementChild
+
+function init() {
+	const App = require("../app/TestComponent").default
+	root = render(<App />, document.getElementById("root"), root)
+}
 
 if (__DEV__ && module.hot) {
 	module.hot.accept("../app/TestComponent", () => {
-		const TestComponent = require("../app/TestComponent").default
-		render(TestComponent)
+		window.requestAnimationFrame(init)
 	})
 }
 
-renderFunc(TestComponent)
+init()

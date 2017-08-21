@@ -2,7 +2,7 @@ import { h } from "preact"
 function TestComponent() {
 	return (
 		<div>
-			{"Hello, World!"}
+			{"Hello!"}
 		</div>
 	)
 }
