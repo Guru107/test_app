@@ -1,0 +1,42 @@
+const { join } = require("path")
+const { clientCommon } = require("./common.config")
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
+const WriteFilePlugin = require("write-file-webpack-plugin")
+const webpack = require("webpack")
+
+const clientConfig = Object.assign({}, clientCommon, {
+	entry: [
+		"webpack-hot-middleware/client",
+		"react-hot-loader/patch",
+		join(__dirname, "..", "src/client/index")
+	],
+	devServer: {
+		contentBase: join(__dirname, "..", "public"),
+		compress: true,
+		port: 8081,
+		color: true,
+		disableHostCheck: true,
+		host: "0.0.0.0",
+		hot: true,
+		noInfo: true,
+		overlay: true
+	},
+	output: Object.assign({}, clientCommon.output, {
+		filename: "[name].js",
+		chunkFilename: "[name].js"
+	}),
+	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
+		new ExtractCssChunks({ filename: "[name].css" }),
+		new WriteFilePlugin(),
+		new webpack.DefinePlugin({
+			__DEV__: true,
+			__PROD__: false,
+			__SERVER__: false,
+			__CLIENT__: true,
+			"process.env.NODE_ENV": JSON.stringify("development")
+		})
+	]
+})
+
+module.exports = clientConfig

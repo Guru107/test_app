@@ -5,11 +5,27 @@
  "main": "build/server.js",
  "scripts": {
   "precommit": "lint-staged",
+  "clean": "rimraf public build",
+  "start": "better-npm-run dev",
   "lint": "eslint 'src/**' 'webpack/**' --ext .js --cache --fix --ignore-path .eslintignore"
+ },
+ "betterScripts": {
+  "dev": {
+   "command": "npm run clean && node src/server/index.js",
+   "env": {
+    "NODE_ENV": "development"
+   }
+  },
+  "prod": {
+   "command": "node src/server/index.js",
+   "env": {
+    "NODE_ENV": "production"
+   }
+  }
  },
  "lint-staged": {
   "*.js": [
-	"eslint --cache --fix --ignore-path .eslintignore",
+   "eslint --cache --fix --ignore-path .eslintignore",
    "git add"
   ]
  },
@@ -32,8 +48,11 @@
   "babel-core": "6.25.0",
   "babel-eslint": "7.2.3",
   "babel-loader": "7.1.1",
+  "babel-plugin-dual-import": "1.1.5",
+  "babel-plugin-module-resolver": "2.7.1",
   "babel-plugin-transform-react-jsx": "6.24.1",
   "babel-preset-env": "1.6.0",
+  "better-npm-run": "0.1.0",
   "css-loader": "0.28.4",
   "eslint": "4.4.1",
   "eslint-config-prettier": "2.3.0",
@@ -45,24 +64,33 @@
   "eslint-plugin-promise": "3.5.0",
   "eslint-plugin-react": "7.2.1",
   "eslint-plugin-standard": "3.0.1",
+  "extract-css-chunks-webpack-plugin": "2.0.16",
   "husky": "0.14.3",
   "less": "2.7.2",
   "less-loader": "4.0.5",
   "lint-staged": "4.0.3",
   "postcss-loader": "2.0.6",
   "prettier": "1.5.3",
+  "react-hot-loader": "3.0.0-beta.7",
+  "rimraf": "2.6.1",
   "style-loader": "0.18.2",
   "webpack": "3.5.4",
-  "webpack-dev-server": "2.7.1"
+  "webpack-dev-middleware": "1.12.0",
+  "webpack-dev-server": "2.7.1",
+  "webpack-hot-middleware": "2.18.2",
+  "webpack-hot-server-middleware": "0.1.0",
+  "webpack-node-externals": "1.6.0",
+  "write-file-webpack-plugin": "4.1.0"
  },
  "dependencies": {
+  "express": "4.15.4",
+  "express-no-favicons": "0.0.1",
+  "lodash": "4.17.4",
   "preact": "8.2.1",
-  "preact-async-route": "2.0.0",
-  "preact-helmet": "4.0.0-alpha-3",
+  "preact-compat": "3.17.0",
   "preact-mdl": "2.2.1",
-  "preact-render-to-string": "3.6.3",
   "preact-router": "2.5.5",
-  "preact-token-input": "0.3.0",
-  "preact-virtual-list": "0.3.1"
+  "react-universal-component": "2.5.0",
+  "webpack-flush-chunks": "1.1.23"
  }
 }

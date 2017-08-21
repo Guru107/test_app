@@ -14,9 +14,17 @@
 		 "__dirname":true,
 		 "module":true,
 		 "Promise":true,
-		 "console":true
+		 "console":true,
+		 "document": true,
+		 "window": true,
+		 "process": true,
+		 "__DEV__": true
 	 },
 	"rules": {
+		"react/jsx-indent":[2,"tab"],
+		"react/react-in-jsx-scope":0,
+		"no-unused-vars": [2,{"varsIgnorePattern":"^h$"}],
+		"react/jsx-filename-extension":[2,{"extensions":[".js"]}],
 		"prettier/prettier":["error",{
 			"tabWidth":4,
 			"useTabs":true,
