@@ -1,5 +1,6 @@
 const { join } = require("path")
 const webpack = require("webpack")
+const WriteFilePlugin = require("write-file-webpack-plugin")
 const { serverCommon } = require("./common.config")
 const serverConfig = Object.assign({}, serverCommon, {
 	entry: join(__dirname, "..", "src/server/render.js"),
@@ -8,6 +9,7 @@ const serverConfig = Object.assign({}, serverCommon, {
 		libraryTarget: "commonjs2"
 	}),
 	plugins: [
+		new WriteFilePlugin(),
 		new webpack.DefinePlugin({
 			__DEV__: true,
 			__PROD__: false,

@@ -1,8 +1,12 @@
 import { h } from "preact"
+import { Button } from "preact-mdl"
+
 function TestComponent() {
 	return (
 		<div>
-			{"Hello!"}
+			<Button>
+				{"I am button!"}
+			</Button>
 		</div>
 	)
 }

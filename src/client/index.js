@@ -8,6 +8,7 @@ function init() {
 }
 
 if (__DEV__ && module.hot) {
+	require("preact/devtools")
 	module.hot.accept("../app/TestComponent", () => {
 		window.requestAnimationFrame(init)
 	})

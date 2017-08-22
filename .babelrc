@@ -5,7 +5,8 @@
 			"browsers": ["> 5% in IN"],
 			"node":"8.2.1"
 		}
-	  }]
+		}],
+		["es2015",{"modules": false}]
 	],
 	"plugins": [
 		["transform-react-jsx", { "pragma": "h" }],

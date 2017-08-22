@@ -4,7 +4,7 @@ const fs = require("fs")
 const commonConfig = {
 	context: path.join(__dirname, "..", "src"),
 	resolve: {
-		extensions: [".js", ".css", ".less"],
+		extensions: [".js", ".css", ".less", ".jsx", ".json"],
 		alias: {
 			react: "preact-compat",
 			"react-dom": "preact-compat"
@@ -26,7 +26,12 @@ const clientCommon = Object.assign({}, commonConfig, {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: "babel-loader",
+				use: {
+					loader: "babel-loader",
+					options: {
+						cacheDirectory: true
+					}
+				},
 				include: [
 					path.resolve(__dirname, "..", "src"),
 					path.resolve(__dirname, "..", "node_modules")
@@ -47,6 +52,21 @@ const clientCommon = Object.assign({}, commonConfig, {
 						},
 						{
 							loader: "less-loader"
+						}
+					]
+				})
+			},
+			{
+				test: /\.css$/,
+				use: ExtractCssChunks.extract({
+					use: [
+						{
+							loader: "css-loader",
+							options: {
+								modules: true,
+								localIdentName:
+									"[name]__[local]--[hash:base64:5]"
+							}
 						}
 					]
 				})
@@ -100,6 +120,18 @@ const serverCommon = Object.assign({}, commonConfig, {
 					},
 					{
 						loader: "less-loader"
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: [
+					{
+						loader: "css-loader/locals",
+						options: {
+							modules: true,
+							localIdentName: "[name]__[local]--[hash:base64:5]"
+						}
 					}
 				]
 			}
