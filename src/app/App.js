@@ -4,7 +4,7 @@ import { Button } from "preact-mdl"
 function TestComponent() {
 	return (
 		<div>
-			<Button>
+			<Button primary raised>
 				{"I am button!"}
 			</Button>
 		</div>

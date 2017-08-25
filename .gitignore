@@ -58,3 +58,9 @@ typings/
 .env
 build/
 public/
+
+#Secret files
+src/server/secret_key.js
+
+#VS Code Settings
+.vscode

@@ -1,45 +1,41 @@
-const express = require("express")
-const webpack = require("webpack")
-const noFavicon = require("express-no-favicons")
-const webpackDevMiddleware = require("webpack-dev-middleware")
-const webpackHotMiddleware = require("webpack-hot-middleware")
-const webpackHotServerMiddleware = require("webpack-hot-server-middleware")
-const clientConfigDev = require("../../webpack/client.dev")
-const serverConfigDev = require("../../webpack/server.dev")
-const clientConfigProd = require("../../webpack/client.prod")
-const serverConfigProd = require("../../webpack/server.prod")
-const publicPath = clientConfigDev.output.publicPath
-const outputPath = clientConfigDev.output.path
+import { h } from "preact"
+import render from "preact-render-to-string"
+import { flushChunkNames } from "react-universal-component/server"
+import flushChunks from "webpack-flush-chunks"
+import App from "App"
 
-const app = express()
+export default ({ clientStats }) => (req, res) => {
+	const app = render(<App />)
+	const chunkNames = flushChunkNames()
 
-app.use(noFavicon())
+	const {
+		js,
+		styles,
+		cssHash,
+		scripts,
+		stylesheets
+	} = flushChunks(clientStats, { chunkNames })
 
-let isBuilt = false
+	console.log("PATH: ", req.path) // eslint-disable-line no-console
+	console.log("DYNAMIC CHUNK NAMES RENDERED", chunkNames) // eslint-disable-line no-console
+	console.log("SCRIPTS SERVED: ", scripts) // eslint-disable-line no-console
+	console.log("STYLESHEETS SERVED: ", stylesheets) // eslint-disable-line no-console
 
-const done = () =>
-	!isBuilt &&
-	app.listen(8080, () => {
-		isBuilt = true
-		console.log("Build complete -- Listening @ localhost:8080") // eslint-disable-line no-console
-	})
-
-if (process.env.NODE_ENV === "development") {
-	console.log("inside dev") // eslint-disable-line no-console
-	const compiler = webpack([clientConfigDev, serverConfigDev])
-	const clientCompiler = compiler.compilers[0]
-	const options = { publicPath, stats: { colors: true } }
-
-	app.use(webpackDevMiddleware(compiler, options))
-	app.use(webpackHotMiddleware(clientCompiler))
-	app.use(webpackHotServerMiddleware(compiler))
-	compiler.plugin("done", done)
-} else {
-	webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
-		const clientStats = stats.toJson().children[0]
-		const serverRender = require("../build/main.js").default
-		app.use(publicPath, express.static(outputPath))
-		app.use(serverRender({ clientStats }))
-		done()
-	})
+	res.send(`
+		<!doctype html>
+		<html>
+			<head>
+				<meta charset="utf-8">
+				<title>Test App</title>
+				<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+				<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+				${styles}
+			</head>
+			<body>
+				<div id="root">${app}</div>
+				${cssHash}
+				${js}
+			</body>
+		</html>
+	`)
 }

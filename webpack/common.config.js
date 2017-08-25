@@ -1,15 +1,28 @@
-const path = require("path")
+const { join, sep } = require("path")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const fs = require("fs")
+
+const pathJoin = p => join(__dirname, "..", p)
+
+const PATHS = {
+	NODE_MODULES: pathJoin("node_modules"),
+	SRC: pathJoin("src"),
+	APP: pathJoin(`src${sep}app`),
+	CLIENT: pathJoin(`src${sep}client`),
+	SERVER: pathJoin(`src${sep}server`),
+	WEBPACK: pathJoin("webpack"),
+	PUBLIC: pathJoin("public"),
+	BUILD: pathJoin("build")
+}
 const commonConfig = {
-	context: path.join(__dirname, "..", "src"),
+	context: PATHS.SRC,
 	resolve: {
 		extensions: [".js", ".css", ".less", ".jsx", ".json"],
 		alias: {
 			react: "preact-compat",
 			"react-dom": "preact-compat"
 		},
-		modules: [path.join(__dirname, "..", "node_modules")]
+		modules: [PATHS.APP, PATHS.CLIENT, PATHS.SERVER, PATHS.NODE_MODULES]
 	}
 }
 
@@ -18,7 +31,7 @@ const clientCommon = Object.assign({}, commonConfig, {
 	target: "web",
 	devtool: "eval",
 	output: {
-		path: path.join(__dirname, "..", "public"),
+		path: PATHS.PUBLIC,
 		publicPath: "/assets/"
 	},
 	module: {
@@ -32,10 +45,7 @@ const clientCommon = Object.assign({}, commonConfig, {
 						cacheDirectory: true
 					}
 				},
-				include: [
-					path.resolve(__dirname, "..", "src"),
-					path.resolve(__dirname, "..", "node_modules")
-				]
+				include: [PATHS.SRC, PATHS.NODE_MODULES]
 			},
 			{
 				test: /\.less$/,
@@ -75,7 +85,7 @@ const clientCommon = Object.assign({}, commonConfig, {
 	}
 })
 const externals = fs
-	.readdirSync(path.join(__dirname, "..", "node_modules"))
+	.readdirSync(PATHS.NODE_MODULES)
 	.filter(
 		x => !/\.bin|react-universal-component|webpack-flush-chunks/.test(x)
 	)
@@ -87,14 +97,9 @@ const serverCommon = Object.assign({}, commonConfig, {
 	context: commonConfig.context,
 	target: "node",
 	name: "server",
-	// externals: [
-	// 	nodeExternals({
-	// 		whitelist: ["react-universal-component", "webpack-flush-chunks"]
-	// 	})
-	// ],
 	externals,
 	output: {
-		path: path.join(__dirname, "..", "build")
+		path: PATHS.BUILD
 	},
 	module: {
 		rules: [
@@ -102,10 +107,7 @@ const serverCommon = Object.assign({}, commonConfig, {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				use: "babel-loader",
-				include: [
-					path.resolve(__dirname, "..", "src"),
-					path.resolve(__dirname, "..", "node_modules")
-				]
+				include: [PATHS.SRC, PATHS.NODE_MODULES]
 			},
 			{
 				test: /\.less$/,
@@ -139,4 +141,4 @@ const serverCommon = Object.assign({}, commonConfig, {
 	}
 })
 
-module.exports = { clientCommon, serverCommon }
+module.exports = { clientCommon, serverCommon, PATHS }

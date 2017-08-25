@@ -1,15 +1,14 @@
-const { join } = require("path")
-const { clientCommon } = require("./common.config")
+const { clientCommon, PATHS } = require("./common.config")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const webpack = require("webpack")
 
 const clientConfig = Object.assign({}, clientCommon, {
 	entry: [
 		"webpack-hot-middleware/client?name=client&path=/__webpack_hmr&timeout=20000&reload=false&quiet=false&noInfo=false",
-		join(__dirname, "..", "src/client/index")
+		PATHS.CLIENT
 	],
 	devServer: {
-		contentBase: join(__dirname, "..", "public"),
+		contentBase: clientCommon.output.path,
 		compress: true,
 		port: 8081,
 		color: true,

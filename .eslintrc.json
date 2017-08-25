@@ -25,6 +25,7 @@
 		"react/react-in-jsx-scope":0,
 		"no-unused-vars": [2,{"varsIgnorePattern":"^h$"}],
 		"react/jsx-filename-extension":[2,{"extensions":[".js"]}],
+		"react/jsx-max-props-per-line":0,
 		"prettier/prettier":["error",{
 			"tabWidth":4,
 			"useTabs":true,

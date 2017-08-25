@@ -1,9 +1,8 @@
-const { join } = require("path")
 const webpack = require("webpack")
 const WriteFilePlugin = require("write-file-webpack-plugin")
-const { serverCommon } = require("./common.config")
+const { serverCommon, PATHS } = require("./common.config")
 const serverConfig = Object.assign({}, serverCommon, {
-	entry: join(__dirname, "..", "src/server/render.js"),
+	entry: PATHS.SERVER,
 	output: Object.assign(serverCommon.output, {
 		filename: "[name].js",
 		libraryTarget: "commonjs2"
