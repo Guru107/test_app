@@ -10,7 +10,7 @@ const clientProdConfig = require("../../webpack/client.prod")
 const serverProdConfig = require("../../webpack/server.prod")
 const publicPath = clientConfigDev.output.publicPath
 const outputPath = clientConfigDev.output.path
-
+const expressStaticGzip = require("express-static-gzip")
 const app = express()
 
 app.use(noFavicon())
@@ -45,7 +45,10 @@ if (process.env.NODE_ENV === "development") {
 		const clientStats = stats.toJson().children[0]
 		const serverRender = require("../../build/main.js").default
 
-		app.use(publicPath, express.static(outputPath))
+		app.use(
+			publicPath,
+			expressStaticGzip(outputPath, { enableBrotli: false })
+		)
 		app.use(serverRender({ clientStats }))
 		done()
 	})

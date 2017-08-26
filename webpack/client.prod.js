@@ -1,6 +1,8 @@
 const { clientCommon, PATHS } = require("./common.config")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin")
+const CompressionPlugin = require("compression-webpack-plugin")
+const BrotliPlugin = require("brotli-webpack-plugin")
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin
 const webpack = require("webpack")
@@ -47,10 +49,16 @@ const clientProdConfig = Object.assign(clientCommon, {
 				}
 			}
 		}),
-		new BundleAnalyzerPlugin({
-			openAnalyzer: true,
-			generateStatsFile: true,
-			statsFilename: "stats.json"
+		new CompressionPlugin({
+			test: /\.(js|html|css)$/,
+			threshold: 10240,
+			minRatio: 0.8,
+			algorithm: "gzip"
+		}),
+		new BrotliPlugin({
+			test: /\.(js|css|html)$/,
+			threshold: 10240,
+			minRatio: 0.8
 		}),
 		new webpack.DefinePlugin({
 			__DEV__: false,
@@ -58,6 +66,11 @@ const clientProdConfig = Object.assign(clientCommon, {
 			__SERVER__: false,
 			__CLIENT__: true,
 			"process.env.NODE_ENV": JSON.stringify("production")
+		}),
+		new BundleAnalyzerPlugin({
+			openAnalyzer: true,
+			generateStatsFile: true,
+			statsFilename: "stats.json"
 		})
 	]
 })

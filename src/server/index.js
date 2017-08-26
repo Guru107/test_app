@@ -60,7 +60,6 @@ export default ({ clientStats }) => (req, res) => {
 				<div id="root">${app}</div>
 				${cssHash}
 				${js}
-				<script>window.__STATS__ = ${JSON.stringify(clientStats)}</script>
 			</body>
 		</html>
 	`)
