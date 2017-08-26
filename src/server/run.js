@@ -6,8 +6,8 @@ const webpackHotMiddleware = require("webpack-hot-middleware")
 const webpackHotServerMiddleware = require("webpack-hot-server-middleware")
 const clientConfigDev = require("../../webpack/client.dev")
 const serverConfigDev = require("../../webpack/server.dev")
-const clientConfigProd = require("../../webpack/client.prod")
-const serverConfigProd = require("../../webpack/server.prod")
+const clientProdConfig = require("../../webpack/client.prod")
+const serverProdConfig = require("../../webpack/server.prod")
 const publicPath = clientConfigDev.output.publicPath
 const outputPath = clientConfigDev.output.path
 
@@ -41,9 +41,10 @@ if (process.env.NODE_ENV === "development") {
 	app.use(webpackHotServerMiddleware(compiler))
 	compiler.plugin("done", done)
 } else {
-	webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
+	webpack([clientProdConfig, serverProdConfig]).run((err, stats) => {
 		const clientStats = stats.toJson().children[0]
-		const serverRender = require("../build/main.js").default
+		const serverRender = require("../../build/main.js").default
+
 		app.use(publicPath, express.static(outputPath))
 		app.use(serverRender({ clientStats }))
 		done()

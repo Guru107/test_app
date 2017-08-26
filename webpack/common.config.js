@@ -44,8 +44,7 @@ const clientCommon = Object.assign({}, commonConfig, {
 					options: {
 						cacheDirectory: true
 					}
-				},
-				include: [PATHS.SRC, PATHS.NODE_MODULES]
+				}
 			},
 			{
 				test: /\.less$/,
@@ -55,13 +54,21 @@ const clientCommon = Object.assign({}, commonConfig, {
 						{
 							loader: "css-loader",
 							options: {
+								minimize: true,
 								modules: true,
 								localIdentName:
 									"[name]__[local]--[hash:base64:5]"
 							}
 						},
 						{
-							loader: "less-loader"
+							loader: "less-loader",
+							options: {
+								strictMath: true,
+								noIeCompat: true,
+								lint: true,
+								strictImports: true,
+								strictUnits: true
+							}
 						}
 					]
 				})
@@ -106,8 +113,7 @@ const serverCommon = Object.assign({}, commonConfig, {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: "babel-loader",
-				include: [PATHS.SRC, PATHS.NODE_MODULES]
+				use: "babel-loader"
 			},
 			{
 				test: /\.less$/,

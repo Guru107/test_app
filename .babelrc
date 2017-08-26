@@ -9,6 +9,7 @@
 		["es2015",{"modules": false}]
 	],
 	"plugins": [
+		["transform-runtime"],
 		["transform-react-jsx", { "pragma": "h" }],
 		["module-resolver",{
 			"root":["./src"],

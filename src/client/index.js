@@ -1,5 +1,5 @@
 import { h, render } from "preact"
-import "material-design-lite/material"
+import "material-design-lite/material.min"
 let root = document.getElementById("root").lastElementChild
 
 function init() {
