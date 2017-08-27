@@ -18,5 +18,10 @@
 				"react-dom":"preact-compat"
 			}
 		}]
-	]
+	],
+	"env":{
+		"production": {
+			"plugins": ["transform-react-remove-prop-types"]
+		}
+	}
 }

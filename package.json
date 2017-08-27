@@ -54,6 +54,7 @@
     "babel-plugin-dual-import": "1.1.5",
     "babel-plugin-module-resolver": "2.7.1",
     "babel-plugin-transform-react-jsx": "6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.8",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-plugin-universal-import": "1.2.7",
     "babel-preset-env": "1.6.0",
@@ -103,6 +104,7 @@
     "preact-compat": "3.17.0",
     "preact-mdl": "2.2.1",
     "preact-router": "2.5.7",
+    "prop-types": "15.5.10",
     "react-universal-component": "2.5.1",
     "webpack-flush-chunks": "1.1.23"
   }
