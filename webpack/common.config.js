@@ -1,7 +1,7 @@
 const { join, sep } = require("path")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const fs = require("fs")
-
+const babelConfig = require("../babelconfig")
 const pathJoin = p => join(__dirname, "..", p)
 
 const PATHS = {
@@ -41,9 +41,9 @@ const clientCommon = Object.assign({}, commonConfig, {
 				exclude: /node_modules/,
 				use: {
 					loader: "babel-loader",
-					options: {
+					options: Object.assign(babelConfig(true), {
 						cacheDirectory: true
-					}
+					})
 				}
 			},
 			{
@@ -113,7 +113,12 @@ const serverCommon = Object.assign({}, commonConfig, {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				use: "babel-loader"
+				use: {
+					loader: "babel-loader",
+					options: Object.assign(babelConfig(false), {
+						cacheDirectory: true
+					})
+				}
 			},
 			{
 				test: /\.less$/,

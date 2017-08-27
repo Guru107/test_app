@@ -2,9 +2,9 @@ import { h } from "preact"
 import { Layout, LayoutContent, Progress } from "preact-mdl"
 import { Router } from "preact-router"
 import Header from "header/Header"
-import NowShowing from "now-showing/NowShowing"
-import PopularListing from "popular/PopularListing"
-import TopRatingListing from "top-rated/TopRatingListing"
+import NowShowing from "now-showing"
+import PopularListing from "popular"
+import TopRatingListing from "top-rated"
 import styles from "./index.less"
 
 function App() {

@@ -35,7 +35,7 @@ const clientProdConfig = Object.assign(clientCommon, {
 			sourceMap: true,
 			extractComments: true,
 			uglifyOptions: {
-				ecma: 5,
+				ecma: 6,
 				compress: {
 					dead_code: true,
 					drop_debugger: true,

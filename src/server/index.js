@@ -2,7 +2,6 @@ import { h } from "preact"
 import render from "preact-render-to-string"
 import { flushChunkNames } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
-import { style, fonts } from "./style.js"
 import App from "App"
 
 export default ({ clientStats }) => (req, res) => {
@@ -27,11 +26,10 @@ export default ({ clientStats }) => (req, res) => {
 		<html>
 			<head>
 				<meta charset="utf-8">
+				<meta name=viewport content="width=device-width, initial-scale=1">
 				<title>The Movie Database</title>
-				<style>
-					${fonts}
-				</style>
-				<style>${style}</style>
+				<link rel="prefetch stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+				<link rel="prefetch stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
 				${styles}
 			</head>
 			<body>

@@ -16,4 +16,5 @@ function TopRatingListing(props) {
 TopRatingListing.propTypes = {
 	url: PropTypes.string.isRequired
 }
+
 export default TopRatingListing
