@@ -102,7 +102,7 @@
 	"express-no-favicons": "0.0.1",
 	"lodash": "4.17.4",
 	"material-design-lite": "1.3.0",
-	"preact": "8.2.4",
+	"preact": "8.2.5",
 	"preact-compat": "3.17.0",
 	"preact-mdl": "2.2.1",
 	"preact-redux": "2.0.2",
