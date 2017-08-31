@@ -1,1 +1,1 @@
-Introduce new features if it helps performance. Focus on the user everything else will follow
+Focus on the user everything else will follow
