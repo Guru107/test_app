@@ -1,12 +1,21 @@
 import { h } from "preact"
 import render from "preact-render-to-string"
-
+import { createMemoryHistory } from "history"
+import { Provider } from "preact-redux"
+import configureStore from "store"
 import { flushChunkNames } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
 import App from "App"
 
 export default ({ clientStats }) => (req, res) => {
-	const app = render(<App url={req.url} />)
+	const memoryHistory = createMemoryHistory()
+	const store = configureStore(memoryHistory, {})
+
+	const app = render(
+		<Provider store={store}>
+			<App history={memoryHistory} url={req.url} />
+		</Provider>
+	)
 
 	const chunkNames = flushChunkNames()
 

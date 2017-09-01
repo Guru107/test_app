@@ -1,10 +1,22 @@
 import { h, render } from "preact"
+import { Provider } from "preact-redux"
 import "material-design-lite/material"
+import { syncHistoryWithStore } from "preact-router-redux"
+import browerHistory from "browserHistory"
+import configureStore from "store"
 let root = document.getElementById("root").lastElementChild
 
 function init() {
-	const App = require("App").default
-	root = render(<App />, document.getElementById("root"), root)
+	const App = require("App").default,
+		store = configureStore(browerHistory, {}),
+		history = syncHistoryWithStore(browerHistory, store)
+	root = render(
+		<Provider store={store}>
+			<App history={history} />
+		</Provider>,
+		document.getElementById("root"),
+		root
+	)
 	if (__DEV__) {
 		const rootNode = document.getElementById("root")
 		if (rootNode.childElementCount > 1) {

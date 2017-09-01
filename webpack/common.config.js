@@ -29,7 +29,7 @@ const commonConfig = {
 const clientCommon = Object.assign({}, commonConfig, {
 	name: "client",
 	target: "web",
-	devtool: "eval",
+	devtool: "eval", //https://webpack.js.org/configuration/devtool/#devtool
 	output: {
 		path: PATHS.PUBLIC,
 		publicPath: "/assets/"

@@ -7,13 +7,14 @@ import PopularListing from "popular/index"
 import TopRatingListing from "top-rated/index"
 import styles from "./index.less"
 import PropTypes from "prop-types"
-function App({ url }) {
+//eslint-disable-next-line react/prop-types
+function App({ url, history }) {
 	return (
 		<Layout fixed-header fixed-tabs>
 			<Header />
 			<Progress class={styles["progress-bar"]} indeterminate />
 			<LayoutContent>
-				<Router url={url}>
+				<Router history={history} url={url}>
 					<NowShowing path="/" />
 					<PopularListing path="/popular" />
 					<TopRatingListing path="/top-rated" />
