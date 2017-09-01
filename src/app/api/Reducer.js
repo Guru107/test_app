@@ -8,12 +8,10 @@ import {
 
 export function moviesReducer(
 	state = {
-		topRated: {},
-		nowShowing: {},
-		popular: {},
-		isFetching: false,
-		success: false,
-		error: false
+		topRated: [],
+		nowShowing: [],
+		popular: [],
+		isFetching: false
 	},
 	action
 ) {
@@ -27,7 +25,7 @@ export function moviesReducer(
 		case RECEIVE_NOW_SHOWING: {
 			return Object.assign({}, state, {
 				isFetching: false,
-				nowShowing: action.data
+				nowShowing: action.data.results
 			})
 		}
 
