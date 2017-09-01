@@ -60,7 +60,7 @@ build/
 public/
 
 #Secret files
-src/server/secret_key.js
+src/app/secret_key.js
 
 #VS Code Settings
 .vscode
