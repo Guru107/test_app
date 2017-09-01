@@ -6,7 +6,7 @@ import {
 	API_FAILURE
 } from "./ActionTypes"
 
-export function moviesReducer(
+export default function moviesReducer(
 	state = {
 		topRated: [],
 		nowShowing: [],
@@ -59,6 +59,9 @@ export function moviesReducer(
 				success: false,
 				error: true
 			})
+		}
+		default: {
+			return state
 		}
 	}
 }
