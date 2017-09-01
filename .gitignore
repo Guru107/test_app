@@ -64,3 +64,6 @@ src/server/secret_key.js
 
 #VS Code Settings
 .vscode
+
+#secret_key 
+secret_key.js
