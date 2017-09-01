@@ -31,3 +31,10 @@ export function receivedTopRated(data) {
 		data
 	}
 }
+
+export function error(error) {
+	return {
+		type: API_FAILURE,
+		error
+	}
+}
