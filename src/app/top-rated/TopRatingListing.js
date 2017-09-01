@@ -1,20 +1,34 @@
-import { h } from "preact"
+import { h, Component } from "preact"
 import { LayoutTabPanel } from "preact-mdl"
 import PropTypes from "prop-types"
+import { connect } from "preact-redux"
+import { getMovies, requestTypes } from "api/ActionCreator"
 
-function TopRatingListing(props) {
-	return (
-		<LayoutTabPanel
-			class={props.url == "/top-rated" ? "is-active" : ""}
-			id="/top-rated"
-		>
-			{`Data /top-rated`}
-		</LayoutTabPanel>
-	)
+class TopRatingListing extends Component {
+
+	render(props) {
+
+		return (
+			<LayoutTabPanel
+				class={props.url == "/top-rated" ? "is-active" : ""}
+				id="/top-rated"
+			>
+				{`Data /top-rated`}
+			</LayoutTabPanel>
+		)
+
+	}
+
+}
+
+function mapStateToProps(state) {
+	return {
+		topRated: state.moviesReducer.topRated
+	}
 }
 
 TopRatingListing.propTypes = {
 	url: PropTypes.string.isRequired
 }
 
-export default TopRatingListing
+export default connect(mapStateToProps)(TopRatingListing)
