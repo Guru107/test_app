@@ -20,14 +20,14 @@ export function receivedNowShowing(data) {
 
 export function receivedPopular(data) {
 	return {
-		type: RECEIVE_NOW_SHOWING,
+		type: RECEIVE_POPULAR,
 		data
 	}
 }
 
 export function receivedTopRated(data) {
 	return {
-		type: RECEIVE_NOW_SHOWING,
+		type: RECEIVE_TOP_RATED,
 		data
 	}
 }
