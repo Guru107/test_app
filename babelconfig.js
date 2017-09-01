@@ -1,4 +1,4 @@
-module.exports = isClient => {
+module.exports = () => {
 	return {
 		presets: [
 			[
@@ -13,7 +13,7 @@ module.exports = isClient => {
 			]
 		],
 		plugins: [
-			isClient ? "syntax-dynamic-import" : "dynamic-import-node",
+			"syntax-dynamic-import",
 			"universal-import",
 			"transform-runtime",
 			["transform-react-jsx", { pragma: "h" }],

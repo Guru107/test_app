@@ -1,12 +1,15 @@
 import { h } from "preact"
 import render from "preact-render-to-string"
+
 import { flushChunkNames } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
 import App from "App"
 
 export default ({ clientStats }) => (req, res) => {
-	const app = render(<App />)
+	const app = render(<App url={req.url} />)
+
 	const chunkNames = flushChunkNames()
+
 	const {
 		js,
 		styles,

@@ -2,18 +2,18 @@ import { h } from "preact"
 import { Layout, LayoutContent, Progress } from "preact-mdl"
 import { Router } from "preact-router"
 import Header from "header/Header"
-import NowShowing from "now-showing"
-import PopularListing from "popular"
-import TopRatingListing from "top-rated"
+import NowShowing from "now-showing/index"
+import PopularListing from "popular/index"
+import TopRatingListing from "top-rated/index"
 import styles from "./index.less"
-
-function App() {
+import PropTypes from "prop-types"
+function App({ url }) {
 	return (
 		<Layout fixed-header fixed-tabs>
 			<Header />
 			<Progress class={styles["progress-bar"]} indeterminate />
 			<LayoutContent>
-				<Router>
+				<Router url={url}>
 					<NowShowing path="/" />
 					<PopularListing path="/popular" />
 					<TopRatingListing path="/top-rated" />
@@ -22,5 +22,7 @@ function App() {
 		</Layout>
 	)
 }
-
+App.propTypes = {
+	url: PropTypes.string.isRequired
+}
 export default App

@@ -18,7 +18,8 @@
 		 "document": true,
 		 "window": true,
 		 "process": true,
-		 "__DEV__": true
+		 "__DEV__": true,
+		 "__SERVER__":true
 	 },
 	"rules": {
 		"react/jsx-indent":[2,"tab"],
