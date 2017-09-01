@@ -6,6 +6,10 @@ import { getMovies, requestTypes } from "api/ActionCreator"
 
 class TopRatingListing extends Component {
 
+	componentDidMount() {
+		this.props.dispatch(getMovies(requestTypes.TOP_RATED))
+	}
+
 	render(props) {
 
 		return (
