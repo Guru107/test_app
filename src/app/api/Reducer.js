@@ -6,7 +6,7 @@ import {
 	API_FAILURE
 } from "./ActionTypes"
 
-export function moviesReducer(
+export default function moviesReducer(
 	state = {
 		topRated: [],
 		nowShowing: [],
@@ -47,6 +47,9 @@ export function moviesReducer(
 			return Object.assign({}, state, {
 				isFetching: false
 			})
+		}
+		default: {
+			return state
 		}
 	}
 }
