@@ -32,14 +32,14 @@ export default function moviesReducer(
 		case RECEIVE_POPULAR: {
 			return Object.assign({}, state, {
 				isFetching: false,
-				popular: action.data
+				popular: action.data.results
 			})
 		}
 
 		case RECEIVE_TOP_RATED: {
 			return Object.assign({}, state, {
 				isFetching: false,
-				topRated: action.data
+				topRated: action.data.results
 			})
 		}
 

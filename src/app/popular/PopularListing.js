@@ -9,7 +9,8 @@ class PopularListing extends Component {
 		this.props.dispatch(getMovies(requestTypes.POPULAR))
 	}
 
-	render() {
+	render(props) {
+
 		return (
 			<LayoutTabPanel
 				class={props.url == "/popular" ? "is-active" : ""}

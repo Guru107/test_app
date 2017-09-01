@@ -32,10 +32,10 @@ export function getMovies(type) {
 		dispatch(actions.request())
 		axios.get(actionMap.url).then(
 			response => {
-				dispatch(actionMap.successAction(response))
+				return dispatch(actionMap.successAction(response.data))
 			},
 			error => {
-				dispatch(actions.error(error))
+				return dispatch(actions.error(error))
 			}
 		)
 	}
