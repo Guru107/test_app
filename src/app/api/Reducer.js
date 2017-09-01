@@ -1,24 +1,65 @@
-import { REQUESTING, RECEIVE_TOP_RATED, RECEIVE_NOW_SHOWING, RECEIVE_POPULAR } from './ActionTypes'
+import {
+	REQUESTING,
+	RECEIVE_TOP_RATED,
+	RECEIVE_NOW_SHOWING,
+	RECEIVE_POPULAR,
+    API_FAILURE
+} from "./ActionTypes"
 
-export function moviesReducer(state = {
-    topRated : [],
-    nowShowing : [],
-    popular : []
-}, action) {
+export function moviesReducer(
+	state = {
+		topRated: {},
+		nowShowing: {},
+		popular: {},
+        isFetching : false,
+        success : false,
+        error : false
+	},
+	action
+) {
+	switch (action.type) {
+		case REQUESTING: {
+            return Object.assign({}, state, {
+                isFetching : true,
+                success : false,
+                error : false                
+            })
+        }
+            
 
-    switch(action.type) {
+		case RECEIVE_NOW_SHOWING: {
+            return Object.assign({}, state, {
+                isFetching : false,
+                success : true,
+                error : false,
+                nowShowing : action.data           
+            })
+        }
 
-        case REQUESTING : 
-            break
+		case RECEIVE_POPULAR: {
+            return Object.assign({}, state, {
+                isFetching : false,
+                success : true,
+                error : false,
+                popular : action.data         
+            })
+        }
 
-        case RECEIVE_NOW_SHOWING :
-            break
+		case RECEIVE_TOP_RATED:{
+            return Object.assign({}, state, {
+                isFetching : false,
+                success : true,
+                error : false,
+                topRated : action.data              
+            })
+        }
 
-        case RECEIVE_POPULAR :
-            break
-
-        case RECEIVE_TOP_RATED : 
-            break
-    }
-
+        case API_FAILURE:{
+            return Object.assign({}, state, {
+                isFetching : false,
+                success : false,
+                error : true            
+            })
+        }
+	}
 }
