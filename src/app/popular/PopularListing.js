@@ -3,20 +3,21 @@ import { LayoutTabPanel } from "preact-mdl"
 import PropTypes from "prop-types"
 import { connect } from "preact-redux"
 import { getMovies, requestTypes } from "api/ActionCreator"
-
+import MovieCard from "card/MovieCard"
 class PopularListing extends Component {
 	componentDidMount() {
 		this.props.dispatch(getMovies(requestTypes.POPULAR))
 	}
 
 	render(props) {
-
 		return (
 			<LayoutTabPanel
 				class={props.url == "/popular" ? "is-active" : ""}
 				id="/popular"
 			>
-				{this.props.popular}
+				{props.popular.map(movie => {
+					return <MovieCard key={movie.id} movie={movie} />
+				})}
 			</LayoutTabPanel>
 		)
 	}

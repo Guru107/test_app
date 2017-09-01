@@ -2,7 +2,8 @@ import {
 	REQUESTING,
 	RECEIVE_TOP_RATED,
 	RECEIVE_NOW_SHOWING,
-	RECEIVE_POPULAR
+	RECEIVE_POPULAR,
+	API_FAILURE
 } from "./ActionTypes"
 
 export function request() {

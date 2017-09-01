@@ -8,7 +8,7 @@ let root = document.getElementById("root").lastElementChild
 
 function init() {
 	const App = require("App").default,
-		store = configureStore(browerHistory, {}),
+		store = configureStore(browerHistory, window.__INITIAL_STATE__),
 		history = syncHistoryWithStore(browerHistory, store)
 	root = render(
 		<Provider store={store}>
