@@ -112,6 +112,7 @@
 		"prop-types": "15.5.10",
 		"react-universal-component": "2.5.2",
 		"redux": "^3.7.2",
+		"redux-thunk": "^2.2.0",
 		"webpack-flush-chunks": "1.1.23"
 	}
 }
