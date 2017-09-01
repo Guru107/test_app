@@ -35,7 +35,7 @@ export function getMovies(type) {
 				dispatch(actionMap.successAction(response))
 			},
 			error => {
-				dispatch(actions.errorCallback(error))
+				dispatch(actions.error(error))
 			}
 		)
 	}
