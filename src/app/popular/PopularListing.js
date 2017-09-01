@@ -2,29 +2,23 @@ import { h, Component } from "preact"
 import { LayoutTabPanel } from "preact-mdl"
 import PropTypes from "prop-types"
 import { connect } from "preact-redux"
-import { getMovies, requestTypes } from 'api/ActionCreator'
+import { getMovies, requestTypes } from "api/ActionCreator"
 
 class PopularListing extends Component {
-
 	componentDidMount() {
-
 		this.props.dispatch(getMovies(requestTypes.POPULAR))
-
 	}
 
 	render() {
-		
 		return (
 			<LayoutTabPanel
 				class={props.url == "/popular" ? "is-active" : ""}
 				id="/popular"
 			>
-				{ this.props.popular }
+				{this.props.popular}
 			</LayoutTabPanel>
 		)
 	}
-
-	
 }
 
 PopularListing.propTypes = {
@@ -32,10 +26,8 @@ PopularListing.propTypes = {
 }
 
 function mapStateToProps(state) {
-	
 	return {
-
-		popular : state.moviesReducer.popular
+		popular: state.moviesReducer.popular
 	}
 }
 
