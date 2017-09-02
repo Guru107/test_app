@@ -20,7 +20,12 @@
 		 "process": true,
 		 "__DEV__": true,
 		 "__SERVER__":true,
-		 "fetch": true
+		 "__PROD__":true,
+		 "fetch": true,
+		 "importScripts":true,
+		 "global":true,
+		 "serviceWorkerOption":true
+
 	 },
 	"rules": {
 		"react/jsx-indent":[2,"tab"],

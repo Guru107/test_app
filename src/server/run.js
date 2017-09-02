@@ -44,7 +44,10 @@ if (process.env.NODE_ENV === "development") {
 	webpack([clientProdConfig, serverProdConfig]).run((err, stats) => {
 		const clientStats = stats.toJson().children[0]
 		const serverRender = require("../../build/main.js").default
-
+		app.use(function(req, res, next) {
+			res.setHeader("Service-Worker-Allowed", "/")
+			next()
+		})
 		app.use(
 			publicPath,
 			expressStaticGzip(outputPath, { enableBrotli: false })
