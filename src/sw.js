@@ -7,7 +7,9 @@ global.toolbox.router.get("/(.*)", global.toolbox.fastest, {
 		maxAgeSeconds: 86400
 	}
 })
-
+global.addEventListener("activate", function(event) {
+	return event.waitUntil(global.clients.claim())
+})
 global.addEventListener("install", function(event) {
 	return event.waitUntil(
 		new Promise(function(resolve, reject) {
