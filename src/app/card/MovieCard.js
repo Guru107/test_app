@@ -14,7 +14,7 @@ function MovieCard({ movie }) {
 			<CardTitle
 				class={card["title-wrapper"]}
 				style={{
-					background: `url(//image.tmdb.org/t/p/w500_and_h281_bestv2${movie.backdrop_path})`
+					background: `url(//image.tmdb.org/t/p/w500_and_h281_bestv2${movie.backdrop_path}) center / cover`
 				}}
 			>
 				<CardTitleText>{movie.title}</CardTitleText>

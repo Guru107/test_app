@@ -1,5 +1,4 @@
 import * as actions from "./Actions"
-import axios from "axios"
 import { TMDB_API_KEY } from "secret_key"
 
 export const requestTypes = {
@@ -37,13 +36,17 @@ export function getMovies(type) {
 		}
 
 		dispatch(actions.request())
-		axios.get(actionMap.url).then(
-			response => {
-				return dispatch(actionMap.successAction(response.data))
-			},
-			error => {
-				return dispatch(actions.error(error))
-			}
-		)
+		fetch(actionMap.url)
+			.then(response => {
+				return response.json()
+			})
+			.then(
+				response => {
+					return dispatch(actionMap.successAction(response))
+				},
+				error => {
+					return dispatch(actions.error(error))
+				}
+			)
 	}
 }

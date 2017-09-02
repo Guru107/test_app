@@ -19,7 +19,8 @@
 		 "window": true,
 		 "process": true,
 		 "__DEV__": true,
-		 "__SERVER__":true
+		 "__SERVER__":true,
+		 "fetch": true
 	 },
 	"rules": {
 		"react/jsx-indent":[2,"tab"],

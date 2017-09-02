@@ -100,6 +100,7 @@ const externals = fs
 		externals[mod] = `commonjs ${mod}`
 		return externals
 	}, {})
+
 const serverCommon = Object.assign({}, commonConfig, {
 	context: commonConfig.context,
 	target: "node",
