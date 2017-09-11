@@ -59,9 +59,6 @@ typings/
 build/
 public/
 
-#Secret files
-src/app/secret_key.js
-
 #VS Code Settings
 .vscode
 
