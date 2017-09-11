@@ -19,3 +19,5 @@ To get this up and running
 To run the production build
 
 `yarn run start:prod`
+
+This boilerplate was created for my [session](https://medium.com/@guru107/my-first-talk-at-gdg-f3ef31253734) on PWA at [GDG Mumbai](https://www.meetup.com/preview/GDG-Mumbai)
