@@ -6,12 +6,6 @@ import browerHistory from "browserHistory"
 import configureStore from "store"
 let root = document.getElementById("root").lastElementChild
 
-if (__PROD__) {
-	const runtime = require("serviceworker-webpack-plugin/lib/runtime")
-	if ("serviceWorker" in window.navigator) {
-		runtime.register({ scope: "/" })
-	}
-}
 function init() {
 	const App = require("App").default,
 		store = configureStore(browerHistory, window.__INITIAL_STATE__),
@@ -36,6 +30,10 @@ if (__DEV__ && module.hot) {
 	module.hot.accept("App", () => {
 		window.requestAnimationFrame(init)
 	})
+}
+
+if (__PROD__ && "serviceWorker" in navigator) {
+	navigator.serviceWorker.register("/assets/sw.js", { scope: "/" })
 }
 
 init()

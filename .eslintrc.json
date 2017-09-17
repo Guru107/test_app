@@ -24,7 +24,8 @@
 		 "fetch": true,
 		 "importScripts":true,
 		 "global":true,
-		 "serviceWorkerOption":true
+		 "serviceWorkerOption":true,
+		 "navigator": true
 
 	 },
 	"rules": {

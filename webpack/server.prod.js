@@ -6,7 +6,7 @@ const serverProdConfig = Object.assign({}, serverCommon, {
 		filename: "[name].js",
 		libraryTarget: "commonjs2"
 	}),
-	plugins: [
+	plugins: serverCommon.plugins.concat([
 		new webpack.DefinePlugin({
 			__DEV__: false,
 			__PROD__: true,
@@ -14,7 +14,7 @@ const serverProdConfig = Object.assign({}, serverCommon, {
 			__CLIENT__: false,
 			"process.env.NODE_ENV": JSON.stringify("production")
 		})
-	]
+	])
 })
 
 module.exports = serverProdConfig

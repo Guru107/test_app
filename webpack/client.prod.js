@@ -3,10 +3,9 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin")
 const CompressionPlugin = require("compression-webpack-plugin")
 const BrotliPlugin = require("brotli-webpack-plugin")
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-	.BundleAnalyzerPlugin
-const SWPlugin = require("serviceworker-webpack-plugin")
-const CopyWebpackPlugin = require("copy-webpack-plugin")
+//const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
+
+const WorkboxPlugin = require("workbox-webpack-plugin")
 const webpack = require("webpack")
 
 const clientProdConfig = Object.assign(clientCommon, {
@@ -37,10 +36,6 @@ const clientProdConfig = Object.assign(clientCommon, {
 				}
 			}
 		}),
-		new SWPlugin({
-			entry: PATHS.SRC + "/sw.js",
-			publicPath: clientCommon.output.publicPath
-		}),
 		new CompressionPlugin({
 			test: /\.(html|css)$|^(?!sw).*\.js$/,
 			threshold: 10240,
@@ -52,16 +47,6 @@ const clientProdConfig = Object.assign(clientCommon, {
 			threshold: 10240,
 			minRatio: 0.8
 		}),
-		new CopyWebpackPlugin([
-			{
-				from: PATHS.NODE_MODULES + "/sw-toolbox/sw-toolbox.js",
-				to: PATHS.PUBLIC + "/sw-toolbox.js"
-			},
-			{
-				from: PATHS.NODE_MODULES + "/sw-toolbox/sw-toolbox.js.map",
-				to: PATHS.PUBLIC + "/sw-toolbox.js.map"
-			}
-		]),
 		new webpack.DefinePlugin({
 			__DEV__: false,
 			__PROD__: true,
@@ -69,11 +54,12 @@ const clientProdConfig = Object.assign(clientCommon, {
 			__CLIENT__: true,
 			"process.env.NODE_ENV": JSON.stringify("production")
 		}),
-		new BundleAnalyzerPlugin({
-			openAnalyzer: true,
-			generateStatsFile: true,
-			statsFilename: "stats.json"
-		})
+		new WorkboxPlugin()
+		// new BundleAnalyzerPlugin({
+		// 	openAnalyzer: false,
+		// 	generateStatsFile: true,
+		// 	statsFilename: "stats.json"
+		// })
 	])
 })
 
