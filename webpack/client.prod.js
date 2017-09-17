@@ -16,22 +16,7 @@ const clientProdConfig = Object.assign(clientCommon, {
 		filename: "js/[name].[chunkhash].js",
 		chunkFilename: "js/[name].[chunkhash].js"
 	}),
-	plugins: [
-		new webpack.optimize.CommonsChunkPlugin({
-			name: "vendor",
-			minChunks: module => {
-				// this assumes your vendor imports exist in the node_modules directory
-
-				return (
-					module.context &&
-					module.context.indexOf("node_modules") !== -1
-				)
-			}
-		}),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: "bootstrap",
-			minChunks: Infinity
-		}),
+	plugins: clientCommon.plugins.concat([
 		new ExtractCssChunks({ filename: "[name].[chunkhash].css" }),
 		new UglifyJSPlugin({
 			parallel: true,
@@ -89,7 +74,7 @@ const clientProdConfig = Object.assign(clientCommon, {
 			generateStatsFile: true,
 			statsFilename: "stats.json"
 		})
-	]
+	])
 })
 
 module.exports = clientProdConfig

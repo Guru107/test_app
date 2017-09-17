@@ -24,6 +24,13 @@ const commonConfig = {
 			"react-dom": "preact-compat"
 		},
 		modules: [PATHS.APP, PATHS.CLIENT, PATHS.SERVER, PATHS.NODE_MODULES]
+	},
+	node: {
+		global: true,
+		process: true,
+		__dirname: true,
+		Buffer: true,
+		setImmediate: true
 	}
 }
 
@@ -90,7 +97,24 @@ const clientCommon = Object.assign({}, commonConfig, {
 				})
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "vendor",
+			minChunks: module => {
+				// this assumes your vendor imports exist in the node_modules directory
+
+				return (
+					module.context &&
+					module.context.indexOf("node_modules") !== -1
+				)
+			}
+		}),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: "bootstrap",
+			minChunks: Infinity
+		})
+	]
 })
 const externals = fs
 	.readdirSync(PATHS.NODE_MODULES)
@@ -109,13 +133,6 @@ const serverCommon = Object.assign({}, commonConfig, {
 	externals,
 	output: {
 		path: PATHS.BUILD
-	},
-	node: {
-		global: true,
-		process: true,
-		__dirname: true,
-		Buffer: true,
-		setImmediate: true
 	},
 	module: {
 		rules: [

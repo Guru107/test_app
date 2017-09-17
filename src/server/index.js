@@ -7,7 +7,7 @@ import { flushChunkNames } from "react-universal-component/server"
 import flushChunks from "webpack-flush-chunks"
 import preloadState from "./preloadState"
 import App from "App"
-
+import { resolve } from "path"
 export default ({ clientStats }) => (req, res) => {
 	preloadState(req.url).then(data => {
 		const memoryHistory = createMemoryHistory()
@@ -21,11 +21,14 @@ export default ({ clientStats }) => (req, res) => {
 		const {
 			js,
 			styles,
-			cssHash,
 			scripts,
-			stylesheets
+			stylesheets,
+			cssHash
 		} = flushChunks(clientStats, {
-			chunkNames
+			chunkNames,
+			before: ["bootstrap", "vendor"],
+			after: ["main"],
+			outputPath: resolve(__dirname, "..", "public")
 		})
 		console.log("PATH: ", req.path) // eslint-disable-line no-console
 		console.log("DYNAMIC CHUNK NAMES RENDERED", chunkNames) // eslint-disable-line no-console

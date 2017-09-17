@@ -22,7 +22,7 @@ const clientConfig = Object.assign({}, clientCommon, {
 		filename: "[name].js",
 		chunkFilename: "[name].js"
 	}),
-	plugins: [
+	plugins: clientCommon.plugins.concat([
 		new webpack.HotModuleReplacementPlugin(),
 		new ExtractCssChunks({ filename: "[name].css" }),
 		new webpack.DefinePlugin({
@@ -32,7 +32,7 @@ const clientConfig = Object.assign({}, clientCommon, {
 			__CLIENT__: true,
 			"process.env.NODE_ENV": JSON.stringify("development")
 		})
-	]
+	])
 })
 
 module.exports = clientConfig
