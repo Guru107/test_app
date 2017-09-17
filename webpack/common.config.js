@@ -2,6 +2,7 @@ const { join, sep } = require("path")
 const ExtractCssChunks = require("extract-css-chunks-webpack-plugin")
 const fs = require("fs")
 const babelConfig = require("../babelconfig")
+const webpack = require("webpack")
 const pathJoin = p => join(__dirname, "..", p)
 
 const PATHS = {
@@ -109,6 +110,13 @@ const serverCommon = Object.assign({}, commonConfig, {
 	output: {
 		path: PATHS.BUILD
 	},
+	node: {
+		global: true,
+		process: true,
+		__dirname: true,
+		Buffer: true,
+		setImmediate: true
+	},
 	module: {
 		rules: [
 			{
@@ -150,7 +158,12 @@ const serverCommon = Object.assign({}, commonConfig, {
 				]
 			}
 		]
-	}
+	},
+	plugins: [
+		new webpack.optimize.LimitChunkCountPlugin({
+			maxChunks: 1
+		})
+	]
 })
 
 module.exports = { clientCommon, serverCommon, PATHS }
