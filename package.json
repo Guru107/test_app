@@ -107,7 +107,7 @@
 		"preact": "8.2.5",
 		"preact-compat": "3.17.0",
 		"preact-mdl": "2.2.1",
-		"preact-redux": "2.0.2",
+		"preact-redux": "2.0.3",
 		"preact-router": "2.5.7",
 		"preact-router-redux": "4.1.0",
 		"prop-types": "15.5.10",
