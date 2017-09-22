@@ -94,7 +94,7 @@
 		"webpack-hot-server-middleware": "0.1.0",
 		"webpack-node-externals": "1.6.0",
 		"webpack-stats-plugin": "0.1.5",
-		"workbox-webpack-plugin": "2.0.1",
+		"workbox-webpack-plugin": "2.0.2-2.0.2-rc1.0",
 		"write-file-webpack-plugin": "4.1.0"
 	},
 	"dependencies": {
