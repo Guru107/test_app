@@ -99,7 +99,7 @@
 	},
 	"dependencies": {
 		"axios": "0.16.2",
-		"express": "4.15.4",
+		"express": "5.0.0-alpha.6",
 		"express-no-favicons": "0.0.1",
 		"history": "4.7.2",
 		"lodash": "4.17.4",
