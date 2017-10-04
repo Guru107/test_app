@@ -76,7 +76,7 @@
 		"eslint-plugin-standard": "3.0.1",
 		"express-static-gzip": "0.3.0",
 		"extract-css-chunks-webpack-plugin": "2.0.17",
-		"husky": "0.14.3",
+		"husky": "0.15.0-beta.2",
 		"less": "2.7.2",
 		"less-loader": "4.0.5",
 		"lint-staged": "^4.2.1",
