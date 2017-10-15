@@ -6,7 +6,7 @@ function Header() {
 	return (
 		<LayoutHeader>
 			<LayoutHeaderRow>
-				<LayoutTitle>{"tMDB"}</LayoutTitle>
+				<LayoutTitle>tMDB</LayoutTitle>
 			</LayoutHeaderRow>
 			<NavBar />
 		</LayoutHeader>
