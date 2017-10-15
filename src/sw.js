@@ -1,27 +1,12 @@
-importScripts("./sw-toolbox.js")
+const libArray = [
+	"workbox-sw.js",
+	"workbox-background-sync.js",
+	"workbox-broadcast-cache-update.js",
+	"workbox-cache-expiration.js",
+	"workbox-cacheable-response.js",
+	"workbox-google-analytics.js"
+]
+importScripts(...libArray)
 
-global.toolbox.router.get("/(.*)", global.toolbox.fastest, {
-	cache: {
-		name: "temp_cache",
-		maxEntries: 20,
-		maxAgeSeconds: 86400
-	}
-})
-global.addEventListener("activate", function(event) {
-	return event.waitUntil(global.clients.claim())
-})
-global.addEventListener("install", function(event) {
-	return event.waitUntil(
-		new Promise(function(resolve, reject) {
-			if (serviceWorkerOption.assets) {
-				return resolve(
-					global.toolbox.precache(serviceWorkerOption.assets)
-				)
-			} else {
-				return reject("No Assets")
-			}
-		}).then(function() {
-			return global.skipWaiting()
-		})
-	)
-})
+const workboxSW = new self.WorkboxSW({ debug: true })
+workboxSW.precache([])

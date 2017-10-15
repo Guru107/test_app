@@ -42,6 +42,7 @@ if (process.env.NODE_ENV === "development") {
 	compiler.plugin("done", done)
 } else {
 	webpack([clientProdConfig, serverProdConfig]).run((err, stats) => {
+		if (err) throw err
 		const clientStats = stats.toJson().children[0]
 		const serverRender = require("../../build/main.js").default
 		app.use(function(req, res, next) {
