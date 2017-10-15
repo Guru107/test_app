@@ -25,12 +25,14 @@
 		 "importScripts":true,
 		 "global":true,
 		 "serviceWorkerOption":true,
-		 "navigator": true
+		 "navigator": true,
+		 "self": true
 
 	 },
 	"rules": {
 		"react/jsx-indent":[2,"tab"],
 		"react/jsx-indent-props":0,
+		"react/jsx-no-literals":0,
 		"react/react-in-jsx-scope":0,
 		"react/prop-types":0,
 		"react/no-unused-prop-types":0,
