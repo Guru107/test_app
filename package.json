@@ -114,7 +114,7 @@
 		"preact-compat": "3.17.0",
 		"preact-mdl": "2.2.2",
 		"preact-redux": "2.0.3",
-		"preact-router": "2.5.7",
+		"preact-router": "2.6.0",
 		"preact-router-redux": "4.1.0",
 		"prop-types": "15.6.0",
 		"react-universal-component": "2.5.5",
