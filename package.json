@@ -104,7 +104,7 @@
 		"write-file-webpack-plugin": "4.2.0"
 	},
 	"dependencies": {
-		"axios": "0.17.0",
+		"axios": "0.17.1",
 		"express": "5.0.0-alpha.6",
 		"express-no-favicons": "0.0.1",
 		"history": "4.7.2",
