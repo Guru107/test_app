@@ -52,8 +52,8 @@
 		"babel-eslint": "8.0.2",
 		"babel-loader": "7.1.2",
 		"babel-plugin-dual-import": "1.1.5",
-		"babel-plugin-dynamic-import-node": "1.1.0",
 		"babel-plugin-dynamic-import-webpack": "1.0.2",
+		"babel-plugin-dynamic-import-node": "1.2.0",
 		"babel-plugin-module-resolver": "3.0.0",
 		"babel-plugin-syntax-dynamic-import": "6.18.0",
 		"babel-plugin-transform-react-jsx": "6.24.1",
@@ -80,7 +80,7 @@
 		"husky": "0.15.0-beta.2",
 		"less": "2.7.3",
 		"less-loader": "4.0.5",
-		"lint-staged": "4.3.0",
+		"lint-staged": "5.0.0",
 		"postcss-loader": "2.0.8",
 		"react-hot-loader": "3.1.2",
 		"prettier": "1.8.0",
@@ -104,7 +104,7 @@
 		"write-file-webpack-plugin": "4.2.0"
 	},
 	"dependencies": {
-		"axios": "0.17.0",
+		"axios": "0.17.1",
 		"express": "5.0.0-alpha.6",
 		"express-no-favicons": "0.0.1",
 		"history": "4.7.2",
