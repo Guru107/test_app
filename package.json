@@ -121,6 +121,6 @@
 		"redux": "3.7.2",
 		"redux-thunk": "2.2.0",
 		"sw-toolbox": "3.6.0",
-		"webpack-flush-chunks": "1.2.2"
+		"webpack-flush-chunks": "1.2.3"
 	}
 }
