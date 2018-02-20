@@ -68,7 +68,7 @@
 		"copy-webpack-plugin": "4.4.0",
 		"compression-webpack-plugin": "1.1.4",
 		"eslint-config-prettier": "2.9.0",
-		"eslint": "4.17.0",
+		"eslint": "4.18.1",
 		"eslint-plugin-import": "2.8.0",
 		"eslint-plugin-node": "6.0.0",
 		"eslint-plugin-prettier": "2.6.0",
