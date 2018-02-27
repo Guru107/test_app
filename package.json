@@ -116,7 +116,7 @@
 		"preact-redux": "2.0.3",
 		"preact-router": "2.6.0",
 		"preact-router-redux": "4.1.0",
-		"prop-types": "15.6.0",
+		"prop-types": "15.6.1",
 		"react-universal-component": "2.8.2",
 		"redux": "3.7.2",
 		"redux-thunk": "2.2.0",
