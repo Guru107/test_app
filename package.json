@@ -79,7 +79,7 @@
 		"extract-css-chunks-webpack-plugin": "2.0.18",
 		"husky": "0.15.0-rc.2",
 		"less": "3.0.0",
-		"less-loader": "4.0.5",
+		"less-loader": "4.0.6",
 		"react-hot-loader": "4.0.0-rc.0",
 		"postcss-loader": "2.1.0",
 		"lint-staged": "6.1.0",
