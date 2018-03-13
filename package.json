@@ -99,7 +99,7 @@
 		"workbox-broadcast-cache-update": "2.0.3",
 		"workbox-cache-expiration": "2.0.3",
 		"workbox-cacheable-response": "2.0.3",
-		"workbox-google-analytics": "2.1.1",
+		"workbox-google-analytics": "3.0.0",
 		"workbox-webpack-plugin": "2.1.2",
 		"write-file-webpack-plugin": "4.2.0"
 	},
