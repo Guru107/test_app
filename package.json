@@ -97,7 +97,7 @@
 		"webpack-stats-plugin": "0.1.5",
 		"workbox-background-sync": "2.0.3",
 		"workbox-broadcast-cache-update": "2.0.3",
-		"workbox-cache-expiration": "2.0.3",
+		"workbox-cache-expiration": "3.0.0",
 		"workbox-cacheable-response": "2.0.3",
 		"workbox-google-analytics": "2.1.1",
 		"workbox-webpack-plugin": "2.1.2",
