@@ -49,7 +49,7 @@
 	"homepage": "https://github.com/Guru107/test_app#readme",
 	"devDependencies": {
 		"babel-core": "6.26.0",
-		"babel-eslint": "8.2.2",
+		"babel-eslint": "8.2.3",
 		"babel-loader": "7.1.2",
 		"babel-plugin-dual-import": "1.2.0",
 		"babel-plugin-dynamic-import-webpack": "1.0.2",
