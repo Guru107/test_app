@@ -108,7 +108,7 @@
 		"express": "5.0.0-alpha.6",
 		"express-no-favicons": "0.0.1",
 		"history": "4.7.2",
-		"lodash": "4.17.5",
+		"lodash": "4.17.21",
 		"material-design-lite": "1.3.0",
 		"preact-compat": "3.18.0",
 		"preact": "8.2.7",
